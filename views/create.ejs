@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="./assets/image/favicon-32x32.png"
+      type="image/gif"
+      sizes="32x32"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/image/favicon-32x32.png"
+      type="image/gif"
+      sizes="32x32"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="./assets/image/apple-touch-icon.png"
+      type="image/gif"
+    />
+    <!-- Google Font CDN -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Create Poll</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 my">
+          <div class="card card-body">
+            <h4>Create A New Poll</h4>
+            <form action="/create" method="POST">
+              <div class="mb-3">
+                <label for="title">Enter Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  name="title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Enter Description</label
+                >
+                <textarea
+                  class="form-control"
+                  name="description"
+                  id="description"
+                >
+                </textarea>
+              </div>
+              <div id="options">
+                <p>Enter Your Options</p>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    name="options"
+                    class="form-control"
+                    placeholder="Option 1"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    name="options"
+                    class="form-control"
+                    placeholder="Option 2"
+                  />
+                </div>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="addOption">
+                Add More Option
+              </button>
+              <br /><br />
+              <input
+                type="submit"
+                value="Create Poll"
+                class="btn btn-primary"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Main JS -->
+    <script src="./assets/css/script.js"></script>
+
+    <script>
+      let options = document.getElementById("options");
+      let addOption = document.getElementById("addOption");
+
+      let currentOptionNumber = 3;
+      addOption.addEventListener("click", function (e) {
+        e.preventDefault();
+        let option = createNewOption();
+        options.appendChild(option);
+      });
+
+      function createNewOption() {
+        let div = document.createElement("div");
+        div.className = "mb-3";
+
+        let input = document.createElement("input");
+        input.type = "text";
+        input.name = "options";
+        input.placeholder = "Option " + currentOptionNumber++;
+        input.className = "form-control";
+        div.appendChild(input);
+        return div;
+      }
+    </script>
+  </body>
+</html>
