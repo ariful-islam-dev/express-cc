@@ -43,20 +43,46 @@
     />
     <!-- Main CSS -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Title of the site</title>
+    <title>Put Your Opinion</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3 my-5">
-          <h5>Your All Polls</h5>
-          <ul class="list-group">
-            <%for(let p of polls){%>
-            <li class="list-group-item">
-              <a href="/polls/<%= p._id %>"> <%= p.title%> </a>
-            </li>
-            <%}%>
-          </ul>
+          <div class="card">
+            <div class="card-header">
+              <h5>Title <%=poll.title%></h5>
+            </div>
+            <div class="card-body">
+              <p>Description: <%= poll.description %></p>
+
+              <div class="my-3">Result</div>
+              <div class="my-4">
+                <h5>What is Your Opinion</h5>
+                <form action="/polls/<%=poll._id %>" method="POST">
+                  <%for(let option of poll.options){%>
+                  <div class="form-check">
+                    <input
+                      type="radio"
+                      name="option"
+                      id="<%=option._id %>"
+                      class="form-check-input"
+                      value="<%= option.name%>"
+                    />
+                    <label class="form-check-label" for="<%= option._id %>">
+                      <%= option.name %>
+                    </label>
+                  </div>
+                  <%}%>
+                  <input
+                    type="submit"
+                    value="Submit Your Opinion"
+                    class="btn btn-primary"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

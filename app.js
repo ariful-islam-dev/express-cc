@@ -2,7 +2,7 @@ const express = require("express");
 
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-const { createPollGetController, createPollPostController, getAllPolls } = require("./pollController");
+const { createPollGetController, createPollPostController, getAllPolls, viewPollGetController } = require("./pollController");
 const port = process.env.PORT || 4000;
 
 const app = express();
@@ -16,7 +16,10 @@ app.use(express.json());
 app.get("/create", createPollGetController);
 app.post('/create', createPollPostController)
 
+app.get('/polls/:id', viewPollGetController)
 app.get('/polls', getAllPolls)
+
+
 
 app.get("/", (req, res) => {
   res.render("home");
