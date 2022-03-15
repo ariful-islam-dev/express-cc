@@ -59,7 +59,7 @@
               <div class="my-3">Result</div>
               <div class="my-4">
                 <h5>What is Your Opinion</h5>
-                <form action="/polls/<%=poll._id %>" method="POST">
+                <form action="/polls/<%= poll._id %>" method="POST">
                   <%for(let option of poll.options){%>
                   <div class="form-check">
                     <input
@@ -67,7 +67,7 @@
                       name="option"
                       id="<%=option._id %>"
                       class="form-check-input"
-                      value="<%= option.name%>"
+                      value="<%= option._id%>"
                     />
                     <label class="form-check-label" for="<%= option._id %>">
                       <%= option.name %>
